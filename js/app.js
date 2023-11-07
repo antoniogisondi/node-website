@@ -1,11 +1,17 @@
 "use strict"
 
 // CREATE SERVER
-const http = require('http');
-http.createServer(function (request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.end('Hello World');
-}).listen(8081);
+const express = require('express');
+const app = express();
 
-console.log('Server running at http://127.0.0.1:8081/');
+// Imposta il motore di visualizzazione e la directory delle viste
+app.set('view engine', 'ejs');
+app.set('views', 'C:\\Users\\Utente\\Desktop\\project\\node-website\\views\\');
 
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
+app.listen(8081, () => {
+    console.log('Server running at http://myproject:8081/');
+});
